@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CKD Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Chronic Kidney Disease Prediction</h2>
+        <form action="/predict" method="post">
+            <div>
+                <label for="red_blood_cells">Red Blood Cells</label>
+                <input type="number" id="red_blood_cells" name="red_blood_cells" step="0.1" required>
+            </div>
+            <div>
+                <label for="pus_cell">Pus Cell</label>
+                <select id="pus_cell" name="pus_cell" required>
+                    <option value="0">Normal</option>
+                    <option value="1">Abnormal</option>
+                </select>
+            </div>
+            <div>
+                <label for="blood_glucose_random">Blood Glucose Random</label>
+                <input type="number" id="blood_glucose_random" name="blood_glucose_random" required>
+            </div>
+            <div>
+                <label for="blood_urea">Blood Urea</label>
+                <input type="number" id="blood_urea" name="blood_urea" required>
+            </div>
+            <div>
+                <label for="pedal_edema">Pedal Edema</label>
+                <select id="pedal_edema" name="pedal_edema" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div>
+                <label for="anemia">Anemia</label>
+                <select id="anemia" name="anemia" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div>
+                <label for="diabetes_mellitus">Diabetes Mellitus</label>
+                <select id="diabetes_mellitus" name="diabetes_mellitus" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div>
+                <label for="coronary_artery_disease">Coronary Artery Disease</label>
+                <select id="coronary_artery_disease" name="coronary_artery_disease" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        <div>
+            {% if prediction %}
+                <h3>Prediction: {{ prediction }}</h3>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
